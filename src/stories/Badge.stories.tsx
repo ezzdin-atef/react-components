@@ -1,44 +1,41 @@
 import { Story } from '@storybook/react';
-import { Button, ButtonProps } from '../components/Button';
+import { Badge, BadgeProps } from '../components/Badge';
 
 export default {
-  title: 'Button',
-  component: Button,
+  title: 'Badge',
+  component: Badge,
 };
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story<BadgeProps> = (args) => (
+  <h3>
+    <Badge {...args}>Badge</Badge> for visualizing
+  </h3>
+);
 
 export const Default = Template.bind({});
-Default.args = {
-  label: 'Button',
-};
+Default.args = {};
 
 export const Loading = Template.bind({});
 Loading.args = {
-  label: 'Button',
   loading: true,
 };
 
 export const Light = Template.bind({});
 Light.args = {
-  label: 'Button',
   light: true,
 };
 
 export const Green = Template.bind({});
 Green.args = {
-  label: 'Button',
   green: true,
 };
 
 export const Red = Template.bind({});
 Red.args = {
-  label: 'Button',
   red: true,
 };
 
 export const Yellow = Template.bind({});
 Yellow.args = {
-  label: 'Button',
   yellow: true,
 };

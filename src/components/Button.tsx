@@ -1,10 +1,16 @@
 import React from 'react';
+import { ImSpinner8 } from 'react-icons/im';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   red?: boolean;
   green?: boolean;
   yellow?: boolean;
+  blue?: boolean;
+  lightRed?: boolean;
+  lightGreen?: boolean;
+  lightYellow?: boolean;
+  lightBlue?: boolean;
   light?: boolean;
   label?: string;
   loading?: boolean;
@@ -26,7 +32,15 @@ const BaseButton: React.FC<ButtonProps> = ({
       disabled={loading}
       {...other}
     >
-      {loading ? 'Loading...' : children ? children : label}
+      {loading ? (
+        <span className="flex items-center gap-2">
+          <ImSpinner8 className="animate-spin" /> Loading
+        </span>
+      ) : children ? (
+        children
+      ) : (
+        label
+      )}
     </button>
   );
 };
@@ -35,11 +49,43 @@ export const Button: React.FC<ButtonProps> = ({
   red,
   green,
   yellow,
+  lightRed,
+  lightGreen,
+  lightYellow,
+  lightBlue,
   light,
   className,
   ...other
 }) => {
-  if (green) {
+  if (lightGreen) {
+    return (
+      <BaseButton
+        className={`${className} bg-green-100 text-green-900  hover:bg-green-200 focus:outline-none`}
+        {...other}
+      ></BaseButton>
+    );
+  } else if (lightRed) {
+    return (
+      <BaseButton
+        className={`${className} bg-red-100 text-red-900  hover:bg-red-200 focus:outline-none`}
+        {...other}
+      ></BaseButton>
+    );
+  } else if (lightBlue) {
+    return (
+      <BaseButton
+        className={`${className} bg-blue-100 text-blue-900  hover:bg-blue-200 focus:outline-none`}
+        {...other}
+      ></BaseButton>
+    );
+  } else if (lightYellow) {
+    return (
+      <BaseButton
+        className={`${className} bg-yellow-100 text-yellow-900  hover:bg-yellow-200 focus:outline-none`}
+        {...other}
+      ></BaseButton>
+    );
+  } else if (green) {
     return (
       <BaseButton
         className={`${className} bg-green-700 text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300`}

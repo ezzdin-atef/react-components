@@ -142,6 +142,8 @@ export const Select: React.FC<React.HTMLAttributes<HTMLSelectElement>> = ({
   );
 };
 
+// TODO: add custom select box from headlessui
+
 export const UploadFile: React.FC<UploadFileProps> = ({
   className,
   id,

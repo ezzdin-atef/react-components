@@ -1,8 +1,6 @@
 import React from 'react';
 import { useTable } from 'react-table';
 
-// ! update react table to stable v8
-
 interface columnsInterface {
   Header: string;
   accessor: string;

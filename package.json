@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.5",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -40,7 +40,14 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@ezzdin-atef/react-components",
+  "name": "@ezzdin_atef/react-components",
+  "keywords": [
+    "react",
+    "components",
+    "tailwindcss",
+    "tailwind",
+    "react-ui"
+  ],
   "author": "Ezzdin Atef",
   "module": "dist/react-components.esm.js",
   "size-limit": [
@@ -84,7 +91,16 @@
     "tslib": "^2.3.1",
     "typescript": "^3.9.10"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezzdin-atef/react-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ezzdin-atef/react-components/issues"
+  },
+  "homepage": "https://github.com/ezzdin-atef/react-components#README.md",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

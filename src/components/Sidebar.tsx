@@ -18,7 +18,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ list, logo }) => {
       className="min-h-screen w-64 overflow-y-auto bg-gray-50 "
       aria-label="Sidebar"
     >
-      <img src={logo} alt="logo" className="mx-auto mb-3 h-12" />
+      <img src={logo} alt="logo" className="mx-auto my-3 h-12" />
       <div className="py-4 px-3 dark:bg-gray-800">
         <ul className="space-y-2">
           {list.map((item, index) => (

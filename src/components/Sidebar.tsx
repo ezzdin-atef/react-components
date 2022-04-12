@@ -19,13 +19,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ list, logo }) => {
       aria-label="Sidebar"
     >
       <img src={logo} alt="logo" className="mx-auto my-3 h-12" />
-      <div className="py-4 px-3 dark:bg-gray-800">
+      <div className="py-4 px-3">
         <ul className="space-y-2">
           {list.map((item, index) => (
             <li key={index}>
               <a
                 href={item.link}
-                className="flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                className="flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 "
               >
                 {item.icon}
                 <span className="ml-3">{item.name}</span>

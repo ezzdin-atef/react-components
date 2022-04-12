@@ -7,9 +7,15 @@ export default {
   component: Modal,
 };
 
+var isOpen = true;
+const closeModal = () => {
+  isOpen = !isOpen;
+};
+
 export const Default = () => (
-  <Modal title="Model" trigger={<Button lightYellow>Click Here</Button>}>
-    {(handleClose) => (
+  <>
+    <Button lightYellow>Click Here</Button>
+    <Modal title="Model" isOpen={isOpen} handleClose={closeModal}>
       <div>
         <ModelBody>
           <p>
@@ -21,11 +27,11 @@ export const Default = () => (
         </ModelBody>
 
         <div className="flex justify-end">
-          <Button lightRed onClick={handleClose}>
+          <Button lightRed onClick={closeModal}>
             Close
           </Button>
         </div>
       </div>
-    )}
-  </Modal>
+    </Modal>
+  </>
 );

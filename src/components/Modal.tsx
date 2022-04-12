@@ -3,7 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { FaTimes } from 'react-icons/fa';
 
 export interface ModalProps {
-  title: string;
+  title: string | React.ReactNode;
   trigger: React.ReactNode;
   children: (handleClose: () => void) => React.ReactNode;
 }

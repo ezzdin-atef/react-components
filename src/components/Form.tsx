@@ -5,7 +5,7 @@ export const Form: React.FC = () => {
 };
 
 export interface UploadFileProps
-  extends React.HTMLAttributes<HTMLInputElement> {
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   note?: string;
   label?: string;
 }
@@ -18,7 +18,7 @@ export const Label: React.FC<React.LabelHTMLAttributes<HTMLLabelElement>> = ({
 }) => {
   return (
     <label
-      className={`${className} block text-sm font-medium text-gray-900 dark:text-gray-300`}
+      className={`${className} block text-sm font-medium text-gray-900`}
       {...other}
     >
       {children}
@@ -27,14 +27,14 @@ export const Label: React.FC<React.LabelHTMLAttributes<HTMLLabelElement>> = ({
 };
 
 // TODO: add succes and error states and icon to input
-export const Input: React.FC<React.HTMLAttributes<HTMLInputElement>> = ({
+export const Input: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = ({
   className,
   children,
   ...other
 }) => {
   return (
     <input
-      className={`${className} block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500`}
+      className={`${className} block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-blue-500`}
       {...other}
     >
       {children}
@@ -55,15 +55,12 @@ export const Checkbox: React.FC<React.HTMLAttributes<HTMLInputElement>> = ({
           id={id}
           aria-describedby={id}
           type="checkbox"
-          className={`${className} focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600`}
+          className={`${className} focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-blue-300 `}
           {...other}
         />
       </div>
       <div className="ml-3 text-sm">
-        <label
-          htmlFor={id}
-          className="font-medium text-gray-900 dark:text-gray-300"
-        >
+        <label htmlFor={id} className="font-medium text-gray-900">
           {children}
         </label>
       </div>
@@ -89,7 +86,7 @@ export const Radio: React.FC<React.HTMLAttributes<HTMLInputElement>> = ({
       />
       <label
         htmlFor={id}
-        className="ml-2 block text-sm font-medium text-gray-900 dark:text-gray-300"
+        className="ml-2 block text-sm font-medium text-gray-900"
       >
         {children}
       </label>
@@ -103,10 +100,7 @@ export const HelperText: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   ...other
 }) => {
   return (
-    <p
-      className={`${className} mt-2 text-sm text-gray-500 dark:text-gray-400`}
-      {...other}
-    >
+    <p className={`${className} mt-2 text-sm text-gray-500`} {...other}>
       {children}
     </p>
   );
@@ -164,10 +158,7 @@ export const UploadFile: React.FC<UploadFileProps> = ({
         {...other}
       />
       {note && (
-        <div
-          className="mt-1 text-sm text-gray-500 dark:text-gray-300"
-          id={id + '_help'}
-        >
+        <div className="mt-1 text-sm text-gray-500" id={id + '_help'}>
           {note}
         </div>
       )}
@@ -192,9 +183,7 @@ export const ToggleSwitch: React.FC<React.HTMLAttributes<HTMLInputElement>> = ({
         {...other}
       />
       <div className="toggle-bg h-6 w-11 rounded-full border border-gray-200 bg-gray-200"></div>
-      <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-        {children}
-      </span>
+      <span className="ml-3 text-sm font-medium text-gray-900">{children}</span>
     </label>
   );
 };

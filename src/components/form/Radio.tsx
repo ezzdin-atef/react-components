@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 
 export const Radio: React.FC<React.HTMLAttributes<HTMLInputElement>> = ({
@@ -35,73 +35,86 @@ interface listInterface {
 export interface CustomRadioProps
   extends React.HTMLAttributes<HTMLInputElement> {
   list: listInterface[];
-  selected?: listInterface | null;
-  setSelected: (selected: listInterface | null) => void;
+  value?: listInterface;
+  changeValue: (selected: listInterface) => void;
+  className?: string;
+  checkedColor?: string;
+  activeColor?: string;
 }
 
 export const CustomRadio: React.FC<CustomRadioProps> = ({
   list,
-  selected,
-  setSelected,
+  value,
+  className,
+  checkedColor = 'bg-sky-900',
+  activeColor = 'ring-offset-sky-300',
+  changeValue,
 }) => {
+  const [selected, setSelected] = useState(value ? value : list[0]);
+
+  const handleChange = (selected: listInterface) => {
+    changeValue(selected);
+    setSelected(selected);
+  };
+
   return (
-    <div className="w-full px-4 py-16">
-      <div className="mx-auto w-full max-w-md">
-        <RadioGroup value={selected} onChange={setSelected}>
-          <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
-          <div className="space-y-2">
-            {list.map((item) => (
-              <RadioGroup.Option
-                key={item.label}
-                value={item}
-                className={({ active, checked }) =>
-                  `${
-                    active
-                      ? 'ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-sky-300'
-                      : ''
-                  }
+    <div className={`${className} mx-auto w-full max-w-md`}>
+      <RadioGroup value={selected} onChange={handleChange}>
+        <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
+        <div className="space-y-2">
+          {list.map((item) => (
+            <RadioGroup.Option
+              key={item.label}
+              value={item}
+              className={({ active, checked }) =>
+                `${
+                  active
+                    ? `ring-2 ring-white ring-opacity-60 ring-offset-2 ${activeColor}`
+                    : ''
+                }
                   ${
-                    checked ? 'bg-sky-900 bg-opacity-75 text-white' : 'bg-white'
+                    checked
+                      ? `${checkedColor} bg-opacity-75 text-white`
+                      : 'bg-white'
                   }
                     relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
-                }
-              >
-                {({ checked }) => (
-                  <>
-                    <div className="flex w-full items-center justify-between">
-                      <div className="flex items-center">
-                        <div className="text-sm">
-                          <RadioGroup.Label
-                            as="p"
-                            className={`font-medium  ${
-                              checked ? 'text-white' : 'text-gray-900'
-                            }`}
-                          >
-                            {item.label}
-                          </RadioGroup.Label>
-                          <RadioGroup.Description
-                            as="span"
-                            className={`inline ${
-                              checked ? 'text-sky-100' : 'text-gray-500'
-                            }`}
-                          >
-                            {item.description}
-                          </RadioGroup.Description>
-                        </div>
+              }
+            >
+              {({ checked }) => (
+                <>
+                  <div className="flex w-full items-center justify-between">
+                    <div className="flex items-center">
+                      <div className="text-sm">
+                        <RadioGroup.Label
+                          as="p"
+                          className={`font-medium  ${
+                            checked ? 'text-white' : 'text-gray-900'
+                          }`}
+                        >
+                          {item.label}
+                        </RadioGroup.Label>
+                        <RadioGroup.Description
+                          as="span"
+                          className={`inline ${
+                            checked ? 'text-sky-100' : 'text-gray-500'
+                          }`}
+                        >
+                          {item.description}
+                        </RadioGroup.Description>
                       </div>
-                      {checked && (
-                        <div className="flex-shrink-0 text-white">
-                          <CheckIcon className="h-6 w-6" />
-                        </div>
-                      )}
                     </div>
-                  </>
-                )}
-              </RadioGroup.Option>
-            ))}
-          </div>
-        </RadioGroup>
-      </div>
+                    {checked && (
+                      <div className="flex-shrink-0 text-white">
+                        <CheckIcon className="h-6 w-6" />
+                      </div>
+                    )}
+                  </div>
+                </>
+              )}
+            </RadioGroup.Option>
+          ))}
+        </div>
+      </RadioGroup>
     </div>
   );
 };

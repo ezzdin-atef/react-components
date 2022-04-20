@@ -29,7 +29,7 @@ export const Radio: React.FC<React.HTMLAttributes<HTMLInputElement>> = ({
 
 interface listInterface {
   label: string;
-  description: string;
+  description: React.ReactNode | string;
 }
 
 export interface CustomRadioProps

@@ -1,11 +1,8 @@
 import React from 'react';
 
-export const Checkbox: React.FC<React.HTMLAttributes<HTMLInputElement>> = ({
-  children,
-  className,
-  id,
-  ...other
-}) => {
+export const Checkbox: React.FC<
+  React.InputHTMLAttributes<HTMLInputElement>
+> = ({ children, className, id, ...other }) => {
   return (
     <div className="flex items-start">
       <div className="flex h-5 items-center">
@@ -17,7 +14,7 @@ export const Checkbox: React.FC<React.HTMLAttributes<HTMLInputElement>> = ({
           {...other}
         />
       </div>
-      <div className="ml-3 text-sm">
+      <div className="text-sm ltr:ml-3 rtl:mr-3">
         <label htmlFor={id} className="font-medium text-gray-900">
           {children}
         </label>

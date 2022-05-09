@@ -31,6 +31,8 @@ export interface CustomRadioProps
   extends React.HTMLAttributes<HTMLInputElement> {
   list: any;
   value?: any;
+  labelName: string;
+  descriptionName: string;
   changeValue: (selected: any) => void;
   className?: string;
   checkedColor?: string;
@@ -41,6 +43,8 @@ export const CustomRadio: React.FC<CustomRadioProps> = ({
   list,
   value,
   className,
+  labelName,
+  descriptionName,
   checkedColor = 'bg-sky-900',
   activeColor = 'ring-offset-sky-300',
   changeValue,
@@ -59,7 +63,7 @@ export const CustomRadio: React.FC<CustomRadioProps> = ({
         <div className="space-y-2">
           {list.map((item: any) => (
             <RadioGroup.Option
-              key={item.label}
+              key={item[labelName]}
               value={item}
               className={({ active, checked }) =>
                 `${
@@ -86,7 +90,7 @@ export const CustomRadio: React.FC<CustomRadioProps> = ({
                             checked ? 'text-white' : 'text-gray-900'
                           }`}
                         >
-                          {item.label}
+                          {item[labelName]}
                         </RadioGroup.Label>
                         <RadioGroup.Description
                           as="span"
@@ -94,7 +98,7 @@ export const CustomRadio: React.FC<CustomRadioProps> = ({
                             checked ? 'text-sky-100' : 'text-gray-500'
                           }`}
                         >
-                          {item.description}
+                          {item[descriptionName]}
                         </RadioGroup.Description>
                       </div>
                     </div>

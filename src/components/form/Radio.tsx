@@ -27,16 +27,11 @@ export const Radio: React.FC<React.HTMLAttributes<HTMLInputElement>> = ({
   );
 };
 
-interface listInterface {
-  label: string;
-  description: React.ReactNode | string;
-}
-
 export interface CustomRadioProps
   extends React.HTMLAttributes<HTMLInputElement> {
-  list: listInterface[];
-  value?: listInterface;
-  changeValue: (selected: listInterface) => void;
+  list: any;
+  value?: any;
+  changeValue: (selected: any) => void;
   className?: string;
   checkedColor?: string;
   activeColor?: string;
@@ -52,7 +47,7 @@ export const CustomRadio: React.FC<CustomRadioProps> = ({
 }) => {
   const [selected, setSelected] = useState(value ? value : list[0]);
 
-  const handleChange = (selected: listInterface) => {
+  const handleChange = (selected: any) => {
     changeValue(selected);
     setSelected(selected);
   };
@@ -62,7 +57,7 @@ export const CustomRadio: React.FC<CustomRadioProps> = ({
       <RadioGroup value={selected} onChange={handleChange}>
         <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
         <div className="space-y-2">
-          {list.map((item) => (
+          {list.map((item: any) => (
             <RadioGroup.Option
               key={item.label}
               value={item}

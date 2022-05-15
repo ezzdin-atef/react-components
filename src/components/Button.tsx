@@ -27,8 +27,7 @@ const BaseButton: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={`${className} rounded-lg px-5 py-2.5 text-sm font-medium 
-    ${loading ? 'focus:ring-none disabled:opacity-70' : ''}`}
+      className={`${className} focus:ring-none rounded-lg px-5 py-2.5 text-sm  font-medium disabled:cursor-not-allowed disabled:opacity-70`}
       disabled={loading}
       {...other}
     >

@@ -265,7 +265,6 @@ const Dropdown: React.FC<DropdownProps> = ({
   addItem,
   toogleDropdown,
   label,
-  id,
 }) => {
   const ref = useRef<any>();
 

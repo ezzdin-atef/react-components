@@ -13,3 +13,4 @@ export * from './components/Table';
 // HOOKS
 export * from './hooks/useToggleModal';
 export * from './hooks/useSwitchModal';
+export * from './hooks/useOutsideClick';

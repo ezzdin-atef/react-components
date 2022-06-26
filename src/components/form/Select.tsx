@@ -3,11 +3,9 @@ import { Combobox, Transition } from '@headlessui/react';
 import { FaCheck, FaSort } from 'react-icons/fa';
 import useOutsideClick from '../../hooks/useOutsideClick';
 
-export const Select: React.FC<React.HTMLAttributes<HTMLSelectElement>> = ({
-  className,
-  children,
-  ...other
-}) => {
+export const Select: React.FC<
+  React.SelectHTMLAttributes<HTMLSelectElement>
+> = ({ className, children, ...other }) => {
   return (
     <select
       className={`${className} block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 `}
@@ -18,7 +16,8 @@ export const Select: React.FC<React.HTMLAttributes<HTMLSelectElement>> = ({
   );
 };
 
-interface CustomSelectProps extends React.HTMLAttributes<HTMLSelectElement> {
+interface CustomSelectProps
+  extends React.SelectHTMLAttributes<HTMLSelectElement> {
   options: any[];
   value: any;
   onChange: (value: any) => void;
@@ -113,7 +112,8 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
   );
 };
 
-interface MultiSelectProps extends React.HTMLAttributes<HTMLSelectElement> {
+interface MultiSelectProps
+  extends React.SelectHTMLAttributes<HTMLSelectElement> {
   options: any[];
   value: any;
   onChange: (value: any) => void;
